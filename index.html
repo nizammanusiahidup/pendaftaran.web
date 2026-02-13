@@ -2,166 +2,465 @@
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aplikasi Pendaftaran Siswa MAM 1 Paciran" />
-  <meta name="author" content="Muhammad Rizky Nizam" />
-  <title>Pendaftaran Siswa - MAM 1 Paciran</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi Pendaftaran Siswa MAM 1 Paciran">
+    <meta name="author" content="Muhammad Rizky Nizam">
+    <title>Pendaftaran Siswa - MAM 1 Paciran</title>
 
-  <!-- ✅ FIX VERCEL: favicon harus dari public -->
-  <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.png" alt="MAM 1 Paciran Logo" class="sidebar-logo">
+            <h2>MAM 1 Paciran</h2>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
-  <!-- Logo Test (biar kamu yakin langsung tampil) -->
-  <div style="display:flex;gap:12px;align-items:center;padding:14px;border-bottom:1px solid #ddd;">
-    <img src="/assets/logo.png" alt="Logo" style="width:45px;height:45px;object-fit:contain;">
-    <strong>TEST LOGO (Kalau ini muncul, berarti sudah aman di Vercel)</strong>
-  </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="tambah-siswa">
+                <i class="fas fa-user-plus"></i>
+                <span>Tambah Siswa</span>
+            </a>
+            <a href="#" class="nav-item" data-page="data-siswa">
+                <i class="fas fa-table"></i>
+                <span>Data Siswa</span>
+            </a>
+            <a href="#" class="nav-item" data-page="cari-siswa">
+                <i class="fas fa-search"></i>
+                <span>Cari Siswa</span>
+            </a>
+            <a href="#" class="nav-item" data-page="pengaturan">
+                <i class="fas fa-cog"></i>
+                <span>Pengaturan</span>
+            </a>
+            <a href="#" class="nav-item" data-page="tentang">
+                <i class="fas fa-info-circle"></i>
+                <span>Tentang</span>
+            </a>
+        </nav>
+    </aside>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <img src="/assets/logo.png" alt="MAM 1 Paciran Logo" class="sidebar-logo" />
-      <h2>MAM 1 Paciran</h2>
-      <button class="sidebar-toggle" id="sidebarToggle">
-        <i class="fas fa-times"></i>
-      </button>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <img src="assets/logo.png" alt="MAM 1 Paciran">
+                    <span>Pendaftaran Siswa</span>
+                </div>
+            </div>
+
+            <div class="header-center">
+                <div class="clock" id="clock">
+                    <i class="fas fa-clock"></i>
+                    <span id="clockTime">Loading...</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content Container -->
+        <div class="content-container">
+
+            <!-- Dashboard Page -->
+            <section class="page active" id="dashboard-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-home"></i> Dashboard</h1>
+                    <p class="subtitle">Selamat datang di Aplikasi Pendaftaran Siswa MAM 1 Paciran</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card stat-primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalSiswa">0</h3>
+                            <p>Total Siswa</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-success">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="siswaKelasX">0</h3>
+                            <p>Kelas X</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-info">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="siswaKelasXI">0</h3>
+                            <p>Kelas XI</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="siswaKelasXII">0</h3>
+                            <p>Kelas XII</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-pie"></i> Rekap Jurusan</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="jurusanStats" class="jurusan-stats">
+                                <p class="no-data">Belum ada data siswa</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-info-circle"></i> Informasi</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Biaya Pendaftaran:</strong> Rp 500.000</p>
+                            <p><strong>Tahun Ajaran:</strong> 2026/2027</p>
+                            <p class="mt-3">Setiap pendaftaran akan mendapatkan bukti pendaftaran dalam format PDF.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tambah Siswa Page -->
+            <section class="page" id="tambah-siswa-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-user-plus"></i> Tambah Siswa Baru</h1>
+                    <p class="subtitle">Lengkapi formulir di bawah untuk mendaftarkan siswa baru</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form id="studentForm" class="student-form">
+                            <input type="hidden" id="studentId">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="namaSiswa">
+                                        <i class="fas fa-user"></i> Nama Siswa <span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="namaSiswa" name="namaSiswa" required
+                                        placeholder="Masukkan nama lengkap">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tempatLahir">
+                                        <i class="fas fa-map-marker-alt"></i> Tempat Lahir <span
+                                            class="required">*</span>
+                                    </label>
+                                    <input type="text" id="tempatLahir" name="tempatLahir" required
+                                        placeholder="Kota/Kabupaten">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tanggalLahir">
+                                        <i class="fas fa-calendar"></i> Tanggal Lahir <span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="tanggalLahir" name="tanggalLahir" required
+                                        placeholder="Pilih tanggal">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="umur">
+                                        <i class="fas fa-hourglass-half"></i> Umur
+                                    </label>
+                                    <input type="text" id="umur" name="umur" readonly placeholder="Otomatis terhitung">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="kelas">
+                                        <i class="fas fa-chalkboard"></i> Kelas <span class="required">*</span>
+                                    </label>
+                                    <select id="kelas" name="kelas" required>
+                                        <option value="">Pilih Kelas</option>
+                                        <option value="X">X</option>
+                                        <option value="XI">XI</option>
+                                        <option value="XII">XII</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jurusan">
+                                        <i class="fas fa-graduation-cap"></i> Jurusan <span class="required">*</span>
+                                    </label>
+                                    <select id="jurusan" name="jurusan" required>
+                                        <option value="">Pilih Jurusan</option>
+                                        <option value="IPA">IPA (Ilmu Pengetahuan Alam)</option>
+                                        <option value="IPS">IPS (Ilmu Pengetahuan Sosial)</option>
+                                        <option value="Bahasa">Bahasa</option>
+                                        <option value="Agama">Agama</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="alamat">
+                                        <i class="fas fa-home"></i> Alamat <span class="required">*</span>
+                                    </label>
+                                    <textarea id="alamat" name="alamat" rows="3" required
+                                        placeholder="Alamat lengkap siswa"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Simpan Data
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="resetForm">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Siswa Page -->
+            <section class="page" id="data-siswa-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-table"></i> Data Siswa</h1>
+                    <p class="subtitle">Daftar seluruh siswa yang terdaftar</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Siswa</th>
+                                        <th>TTL</th>
+                                        <th>Umur</th>
+                                        <th>Kelas</th>
+                                        <th>Jurusan</th>
+                                        <th>Alamat</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentTableBody">
+                                    <tr>
+                                        <td colspan="8" class="no-data">Belum ada data siswa</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cari Siswa Page -->
+            <section class="page" id="cari-siswa-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-search"></i> Cari Siswa</h1>
+                    <p class="subtitle">Cari siswa berdasarkan nama, kelas, atau jurusan</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="search-form">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInput"
+                                    placeholder="Cari berdasarkan nama, kelas, atau jurusan...">
+                            </div>
+                        </div>
+
+                        <div class="table-container mt-3">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Siswa</th>
+                                        <th>TTL</th>
+                                        <th>Umur</th>
+                                        <th>Kelas</th>
+                                        <th>Jurusan</th>
+                                        <th>Alamat</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="searchTableBody">
+                                    <tr>
+                                        <td colspan="8" class="no-data">Gunakan kolom pencarian di atas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pengaturan Page -->
+            <section class="page" id="pengaturan-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-cog"></i> Pengaturan</h1>
+                    <p class="subtitle">Sesuaikan preferensi aplikasi</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-palette"></i> Tampilan</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Mode Gelap</h4>
+                                <p>Mengubah tema aplikasi ke mode gelap atau terang</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeSwitch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-database"></i> Data</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Hapus Semua Data</h4>
+                                <p>Menghapus seluruh data siswa dari sistem (tidak dapat dikembalikan)</p>
+                            </div>
+                            <button class="btn btn-danger" id="clearDataBtn">
+                                <i class="fas fa-trash"></i> Hapus Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tentang Page -->
+            <section class="page" id="tentang-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-info-circle"></i> Tentang Aplikasi</h1>
+                    <p class="subtitle">Informasi mengenai aplikasi dan pembuat</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="assets/logo.png" alt="MAM 1 Paciran" class="about-logo">
+                        <h2 class="mt-3">Aplikasi Pendaftaran Siswa</h2>
+                        <h3>MAM 1 Paciran</h3>
+                        <p class="mt-3">Aplikasi pendaftaran siswa berbasis web untuk memudahkan proses administrasi
+                            pendaftaran siswa baru di Madrasah Aliyah Matholi'ul Anwar 1 Paciran.</p>
+
+                        <div class="about-info mt-4">
+                            <div class="info-item">
+                                <i class="fas fa-code"></i>
+                                <strong>Pembuat:</strong> Muhammad Rizky Nizam
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-school"></i>
+                                <strong>Sekolah:</strong> MAM 1 Paciran
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar"></i>
+                                <strong>Tahun:</strong> 2026
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <strong>Teknologi:</strong> HTML, CSS, JavaScript
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="assets/logo.png" alt="MAM 1 Paciran">
+                    <span>© 2026 MAM 1 Paciran</span>
+                </div>
+                <div class="footer-center">
+                    Created by: <strong>Muhammad Rizky Nizam</strong>
+                </div>
+                <div class="footer-right">
+                    <a href="#" data-page="tentang">Tentang</a>
+                    <span>•</span>
+                    <a href="#" data-page="pengaturan">Pengaturan</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Notifikasi</span>
     </div>
 
-    <nav class="sidebar-nav">
-      <a href="#" class="nav-item active" data-page="dashboard">
-        <i class="fas fa-home"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="#" class="nav-item" data-page="tambah-siswa">
-        <i class="fas fa-user-plus"></i>
-        <span>Tambah Siswa</span>
-      </a>
-      <a href="#" class="nav-item" data-page="data-siswa">
-        <i class="fas fa-table"></i>
-        <span>Data Siswa</span>
-      </a>
-      <a href="#" class="nav-item" data-page="cari-siswa">
-        <i class="fas fa-search"></i>
-        <span>Cari Siswa</span>
-      </a>
-      <a href="#" class="nav-item" data-page="pengaturan">
-        <i class="fas fa-cog"></i>
-        <span>Pengaturan</span>
-      </a>
-      <a href="#" class="nav-item" data-page="tentang">
-        <i class="fas fa-info-circle"></i>
-        <span>Tentang</span>
-      </a>
-    </nav>
-  </aside>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js"></script>
 
-  <!-- Main -->
-  <main class="main-content">
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <!-- Header -->
-    <header class="header">
-      <div class="header-left">
-        <button class="menu-toggle" id="menuToggle">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <div class="header-logo">
-          <img src="/assets/logo.png" alt="MAM 1 Paciran" />
-          <span>Pendaftaran Siswa</span>
-        </div>
-      </div>
-
-      <div class="header-center">
-        <div class="clock" id="clock">
-          <i class="fas fa-clock"></i>
-          <span id="clockTime">Loading...</span>
-        </div>
-      </div>
-
-      <div class="header-right">
-        <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </header>
-
-    <!-- Content -->
-    <div class="content-container">
-
-      <!-- Dashboard -->
-      <section class="page active" id="dashboard-page">
-        <div class="page-header">
-          <h1><i class="fas fa-home"></i> Dashboard</h1>
-          <p class="subtitle">Selamat datang di Aplikasi Pendaftaran Siswa MAM 1 Paciran</p>
-        </div>
-      </section>
-
-      <!-- Tentang -->
-      <section class="page" id="tentang-page">
-        <div class="page-header">
-          <h1><i class="fas fa-info-circle"></i> Tentang Aplikasi</h1>
-          <p class="subtitle">Informasi mengenai aplikasi dan pembuat</p>
-        </div>
-
-        <div class="card">
-          <div class="card-body text-center">
-            <img src="/assets/logo.png" alt="MAM 1 Paciran" class="about-logo" />
-            <h2 class="mt-3">Aplikasi Pendaftaran Siswa</h2>
-            <h3>MAM 1 Paciran</h3>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-left">
-          <img src="/assets/logo.png" alt="MAM 1 Paciran" />
-          <span>© 2026 MAM 1 Paciran</span>
-        </div>
-        <div class="footer-center">
-          Created by: <strong>Muhammad Rizky Nizam</strong>
-        </div>
-        <div class="footer-right">
-          <a href="#" data-page="tentang">Tentang</a>
-          <span>•</span>
-          <a href="#" data-page="pengaturan">Pengaturan</a>
-        </div>
-      </div>
-    </footer>
-
-  </main>
-
-  <!-- Flatpickr -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js"></script>
-
-  <!-- jsPDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="app.js"></script>
-
+    <!-- Custom JS -->
+    <script src="app.js"></script>
 </body>
 
 </html>
