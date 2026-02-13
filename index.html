@@ -2,35 +2,37 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplikasi Pendaftaran Siswa MAM 1 Paciran">
-    <meta name="author" content="Muhammad Rizky Nizam">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aplikasi Pendaftaran Siswa MAM 1 Paciran" />
+    <meta name="author" content="Muhammad Rizky Nizam" />
     <title>Pendaftaran Siswa - MAM 1 Paciran</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <!-- ✅ Favicon (FIX: pakai absolute path) -->
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="assets/logo.png" alt="MAM 1 Paciran Logo" class="sidebar-logo">
+            <!-- ✅ FIX: logo pakai absolute path -->
+            <img src="/assets/logo.png" alt="MAM 1 Paciran Logo" class="sidebar-logo" />
             <h2>MAM 1 Paciran</h2>
             <button class="sidebar-toggle" id="sidebarToggle">
                 <i class="fas fa-times"></i>
@@ -73,8 +75,10 @@
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
+
                 <div class="header-logo">
-                    <img src="assets/logo.png" alt="MAM 1 Paciran">
+                    <!-- ✅ FIX: logo pakai absolute path -->
+                    <img src="/assets/logo.png" alt="MAM 1 Paciran" />
                     <span>Pendaftaran Siswa</span>
                 </div>
             </div>
@@ -180,7 +184,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form id="studentForm" class="student-form">
-                            <input type="hidden" id="studentId">
+                            <input type="hidden" id="studentId" />
 
                             <div class="form-row">
                                 <div class="form-group">
@@ -188,7 +192,7 @@
                                         <i class="fas fa-user"></i> Nama Siswa <span class="required">*</span>
                                     </label>
                                     <input type="text" id="namaSiswa" name="namaSiswa" required
-                                        placeholder="Masukkan nama lengkap">
+                                        placeholder="Masukkan nama lengkap" />
                                 </div>
                             </div>
 
@@ -199,7 +203,7 @@
                                             class="required">*</span>
                                     </label>
                                     <input type="text" id="tempatLahir" name="tempatLahir" required
-                                        placeholder="Kota/Kabupaten">
+                                        placeholder="Kota/Kabupaten" />
                                 </div>
 
                                 <div class="form-group">
@@ -207,7 +211,7 @@
                                         <i class="fas fa-calendar"></i> Tanggal Lahir <span class="required">*</span>
                                     </label>
                                     <input type="text" id="tanggalLahir" name="tanggalLahir" required
-                                        placeholder="Pilih tanggal">
+                                        placeholder="Pilih tanggal" />
                                 </div>
                             </div>
 
@@ -216,7 +220,7 @@
                                     <label for="umur">
                                         <i class="fas fa-hourglass-half"></i> Umur
                                     </label>
-                                    <input type="text" id="umur" name="umur" readonly placeholder="Otomatis terhitung">
+                                    <input type="text" id="umur" name="umur" readonly placeholder="Otomatis terhitung" />
                                 </div>
                             </div>
 
@@ -317,7 +321,7 @@
                             <div class="search-input-group">
                                 <i class="fas fa-search"></i>
                                 <input type="text" id="searchInput"
-                                    placeholder="Cari berdasarkan nama, kelas, atau jurusan...">
+                                    placeholder="Cari berdasarkan nama, kelas, atau jurusan..." />
                             </div>
                         </div>
 
@@ -364,7 +368,7 @@
                                 <p>Mengubah tema aplikasi ke mode gelap atau terang</p>
                             </div>
                             <label class="switch">
-                                <input type="checkbox" id="darkModeSwitch">
+                                <input type="checkbox" id="darkModeSwitch" />
                                 <span class="slider"></span>
                             </label>
                         </div>
@@ -398,11 +402,16 @@
 
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="assets/logo.png" alt="MAM 1 Paciran" class="about-logo">
+                        <!-- ✅ FIX: logo pakai absolute path -->
+                        <img src="/assets/logo.png" alt="MAM 1 Paciran" class="about-logo" />
+
                         <h2 class="mt-3">Aplikasi Pendaftaran Siswa</h2>
                         <h3>MAM 1 Paciran</h3>
-                        <p class="mt-3">Aplikasi pendaftaran siswa berbasis web untuk memudahkan proses administrasi
-                            pendaftaran siswa baru di Madrasah Aliyah Matholi'ul Anwar 1 Paciran.</p>
+
+                        <p class="mt-3">
+                            Aplikasi pendaftaran siswa berbasis web untuk memudahkan proses administrasi
+                            pendaftaran siswa baru di Madrasah Aliyah Matholi'ul Anwar 1 Paciran.
+                        </p>
 
                         <div class="about-info mt-4">
                             <div class="info-item">
@@ -431,7 +440,8 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
-                    <img src="assets/logo.png" alt="MAM 1 Paciran">
+                    <!-- ✅ FIX: logo pakai absolute path -->
+                    <img src="/assets/logo.png" alt="MAM 1 Paciran" />
                     <span>© 2026 MAM 1 Paciran</span>
                 </div>
                 <div class="footer-center">
